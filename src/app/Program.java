@@ -10,9 +10,11 @@ public class Program {
         Scanner sc = new Scanner(System.in);
 
         int atletas, i;
-        double som, count, countM, countH, porcentagem, peso, Mediap,greatestHeight;
+        double som, count, countM, countH, porcentagemH, peso, Mediap, greatestHeight;
         String tallestAthlete = null;
 
+        porcentagemH = 0;
+        countH =0;
         greatestHeight = 0;
         som = 0;
         peso = 0;
@@ -37,6 +39,11 @@ public class Program {
             while (sexo != 'F' && sexo != 'M') {
                 System.out.print("Valor invalido! Favor digitar F ou M :");
                 sexo = sc.next().charAt(0);
+            }
+
+            if(sexo == 'M') {
+                countH+= + 1;
+                porcentagemH = 100.0 * countH / atletas;
             }
 
 
@@ -80,6 +87,7 @@ public class Program {
         System.out.println("RELATÓRIO:");
         System.out.printf("Peso médio dos atletas: %.2f\n" , Mediap);
         System.out.println("Atleta mais alto: " + tallestAthlete);
+        System.out.printf("Porcentagem de homens: %.1f %%%n", porcentagemH);
 
 
 
