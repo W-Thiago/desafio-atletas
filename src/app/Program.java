@@ -9,12 +9,17 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
+        int atletas, i;
+        double som, count, countM, countH, porcentagem, peso, Mediap;
+        som = 0;
+        peso = 0;
+        Mediap = 0;
+
         System.out.print("Qual a quantidade de atletas? ");
-        int atletas = sc.nextInt();
-        double som = 0;
+        atletas = sc.nextInt();
         sc.nextLine();
         //---------------------------------------------
-        for(int i = 1; i <= atletas; i++ ) {
+        for( i = 1; i <= atletas; i++ ) {
             //---------------------------------------------
             System.out.print("Digite os dados do atleta numero " + i + ":\n");
             System.out.print("Nome: ");
@@ -27,6 +32,7 @@ public class Program {
                 System.out.println("Valor invalido! Favor digitar F ou M:");
                 sexo = sc.next().charAt(0);
             }
+            
             //---------------------------------------------
             System.out.print("altura: ");
             double altura = sc.nextDouble();
@@ -38,17 +44,21 @@ public class Program {
 
             //---------------------------------------------
             System.out.print("Peso: ");
-            double peso = sc.nextDouble();
+            peso = sc.nextDouble();
             sc.nextLine();
 
-            while (peso <= 0) {
+           if (peso <= 0) {
                 System.out.print("Valor invalido! Favor digitar um valor positivo:");
                 peso = sc.nextDouble();
-            }
+            } else {
+               som = som + peso;
+           }
         }
 
-
-
+        System.out.println("\n");
+        System.out.println("RELATÓRIO:");
+        Mediap = som / atletas;
+        System.out.printf("Peso médio dos atletas: %.2f\n" , Mediap);
 
 
         sc.close();
