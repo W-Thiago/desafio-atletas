@@ -10,7 +10,10 @@ public class Program {
         Scanner sc = new Scanner(System.in);
 
         int atletas, i;
-        double som, count, countM, countH, porcentagem, peso, Mediap;
+        double som, count, countM, countH, porcentagem, peso, Mediap,greatestHeight;
+        String tallestAthlete = null;
+
+        greatestHeight = 0;
         som = 0;
         peso = 0;
         Mediap = 0;
@@ -24,41 +27,61 @@ public class Program {
             System.out.print("Digite os dados do atleta numero " + i + ":\n");
             System.out.print("Nome: ");
             String nome = sc.nextLine();
-            //---------------------------------------------
 
+
+
+
+            //---------------------------------------------
             System.out.print("sexo: ");
             char sexo =sc.next().charAt(0);
             while (sexo != 'F' && sexo != 'M') {
-                System.out.println("Valor invalido! Favor digitar F ou M:");
+                System.out.print("Valor invalido! Favor digitar F ou M :");
                 sexo = sc.next().charAt(0);
             }
-            
+
+
+
+
+
+
             //---------------------------------------------
             System.out.print("altura: ");
             double altura = sc.nextDouble();
 
             while (altura <= 0) {
-                System.out.print("Valor invalido! Favor digitar um valor positivo:");
+                System.out.print("Valor invalido! Favor digitar um valor positivo :");
                 altura = sc.nextDouble();
             }
+            if (altura > greatestHeight) {
+                greatestHeight = altura;
+                tallestAthlete = nome;
+            }
+
+
+
+
 
             //---------------------------------------------
             System.out.print("Peso: ");
             peso = sc.nextDouble();
             sc.nextLine();
 
-           if (peso <= 0) {
+            while (peso <= 0) {
                 System.out.print("Valor invalido! Favor digitar um valor positivo:");
                 peso = sc.nextDouble();
-            } else {
-               som = som + peso;
-           }
+            }
+           if (peso > 0) {
+                som = som + peso;
+               Mediap = som / atletas;
+            }
         }
 
         System.out.println("\n");
         System.out.println("RELATÓRIO:");
-        Mediap = som / atletas;
         System.out.printf("Peso médio dos atletas: %.2f\n" , Mediap);
+        System.out.println("Atleta mais alto: " + tallestAthlete);
+
+
 
 
         sc.close();
